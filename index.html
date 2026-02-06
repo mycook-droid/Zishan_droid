@@ -3,7 +3,12 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#00ff88">
+    <meta name="description" content="Zishan - Creative Developer & Designer Portfolio">
+    <!-- Performance optimization -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <title>Zishan - Creative Developer</title>
     <link
         href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap"
@@ -722,6 +727,341 @@
             font-weight: 700;
         }
 
+        /* ============================================= */
+        /* MOBILE RESPONSIVE IMPROVEMENTS */
+        /* ============================================= */
+
+        /* Mobile Navigation */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .hamburger span {
+            width: 30px;
+            height: 3px;
+            background: var(--accent);
+            margin: 4px 0;
+            border-radius: 2px;
+            transition: 0.3s;
+        }
+
+        .mobile-nav-links {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background: var(--bg-primary);
+            padding: 80px 30px 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            z-index: 1000;
+            transition: right 0.4s ease;
+            box-shadow: -5px 0 20px rgba(0, 0, 0, 0.5);
+            border-left: 2px solid var(--accent);
+        }
+
+        .mobile-nav-links.active {
+            right: 0;
+        }
+
+        .mobile-nav-links a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: 600;
+            padding: 15px;
+            border-bottom: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--accent);
+            padding-left: 25px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 30px;
+            color: var(--accent);
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Mobile Hero Section */
+        @media (max-width: 768px) {
+
+            /* Hero Section */
+            .hero {
+                padding: 80px 20px 40px;
+                min-height: auto;
+            }
+
+            .hero-title {
+                font-size: 48px;
+                line-height: 1.2;
+                margin-bottom: 20px;
+            }
+
+            .hero-subtitle {
+                font-size: 16px;
+                letter-spacing: 2px;
+                margin-bottom: 15px;
+            }
+
+            .hero-description {
+                font-size: 18px;
+                margin-bottom: 30px;
+                line-height: 1.5;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                padding: 15px 30px;
+                font-size: 16px;
+            }
+
+            /* Navigation */
+            .nav-links {
+                display: none;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            /* Skills Section */
+            .skills-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 0 15px;
+            }
+
+            .skill-card {
+                padding: 25px;
+                margin: 0 10px;
+            }
+
+            .skill-icon {
+                font-size: 50px;
+            }
+
+            .skill-name {
+                font-size: 22px;
+            }
+
+            /* Projects Section */
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+                padding: 0 15px;
+            }
+
+            .project-card {
+                height: 400px;
+                margin: 0 10px;
+            }
+
+            .project-number {
+                font-size: 80px;
+            }
+
+            .project-title {
+                font-size: 28px;
+            }
+
+            .project-description {
+                font-size: 16px;
+            }
+
+            /* Contact Section */
+            .terminal-body {
+                padding: 25px;
+            }
+
+            .terminal-line {
+                font-size: 14px;
+            }
+
+            .contact-form input,
+            .contact-form textarea {
+                padding: 12px;
+                font-size: 14px;
+            }
+
+            /* Footer */
+            footer {
+                padding: 30px 20px;
+            }
+
+            .social-links {
+                gap: 20px;
+            }
+
+            .social-link {
+                font-size: 30px;
+            }
+
+            /* Disable heavy animations on mobile */
+            .glitch::before,
+            .glitch::after {
+                animation: none;
+                display: none;
+            }
+
+            /* Simplify hover effects on mobile */
+            .skill-card:active {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+
+            .project-card:active .project-card-inner {
+                transform: scale(0.98);
+                transition: transform 0.1s ease;
+            }
+
+            /* Mobile: No 3D transforms, just stack cards */
+            .project-card {
+                perspective: none;
+                height: auto;
+            }
+
+            .project-card-front,
+            .project-card-back {
+                position: relative;
+                backface-visibility: visible;
+                transform: none !important;
+                height: auto;
+            }
+
+            .project-card-inner {
+                display: flex;
+                flex-direction: column;
+                transform: none !important;
+            }
+
+            .project-card-front,
+            .project-card-back {
+                position: relative;
+                height: auto;
+                min-height: 250px;
+            }
+
+            /* GPU Acceleration for smooth scrolling on mobile */
+            body {
+                -webkit-overflow-scrolling: touch;
+            }
+
+            * {
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            /* Reduce motion for better performance */
+            .skill-card,
+            .project-card,
+            .btn {
+                will-change: auto;
+                transition: transform 0.2s ease, opacity 0.2s ease;
+            }
+
+            /* Hide particle canvas on mobile */
+            #particleCanvas {
+                opacity: 0.3;
+            }
+
+            /* Reduce matrix opacity on mobile */
+            #matrixCanvas {
+                opacity: 0.05;
+            }
+        }
+
+        /* Very small devices */
+        @media (max-width: 480px) {
+            .hero-title {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 32px;
+                margin-bottom: 40px;
+            }
+
+            nav {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 22px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            /* Entry screen mobile fix */
+            #greetingText {
+                font-size: 30px;
+            }
+
+            .flying-letter {
+                font-size: 30px;
+            }
+
+            #enterBtn {
+                padding: 15px 40px;
+                font-size: 18px;
+                bottom: 50px;
+            }
+        }
+
+        /* Landscape mode fix */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                min-height: 120vh;
+                padding-top: 150px;
+            }
+
+            .hero-title {
+                font-size: 40px;
+            }
+        }
+
+        /* Tablet responsive */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .hero-title {
+                font-size: 80px;
+            }
+
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* Prevent horizontal scroll */
+        html,
+        body {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
         .contact-form input,
         .contact-form textarea {
             width: 100%;
@@ -861,6 +1201,8 @@
         .project-card {
             cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"><circle cx="12" cy="12" r="10" fill="%2300ccff" opacity="0.7"/></svg>'), pointer;
         }
+
+/
     </style>
 </head>
 
@@ -1125,13 +1467,16 @@
                     <div class="terminal-dot"></div>
                     <div class="terminal-dot"></div>
                     <div class="terminal-dot"></div>
-                    <span>contact@zishan.dev</span>
+                    <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                            data-cfemail="c9aaa6a7bda8aabd89b3a0baa1a8a7e7adacbf">[email&#160;protected]</a></span>
                 </div>
                 <div class="terminal-body">
                     <div class="terminal-line"><span>$</span> Hello! Let's build something practical together.</div>
                     <div class="terminal-line"><span>$</span> I'm open to freelance projects, collaborations, and
                         opportunities.</div>
-                    <div class="terminal-line"><span>></span> Email: zishan@example.com</div>
+                    <div class="terminal-line"><span>></span> Email: <a href="/cdn-cgi/l/email-protection"
+                            class="__cf_email__"
+                            data-cfemail="0973607a616867496c71686479656c276a6664">[email&#160;protected]</a></div>
                     <div class="terminal-line"><a href="https://github.com/mycook-droid" target="_blank"><span>></span>
                             GitHub: github.com/mycook_droid</a></div>
                     <div class="terminal-line"><a href="https://www.linkedin.com/in/mohd-zishan-73a868312/"
@@ -1164,7 +1509,8 @@
                 <a href="https://github.com/mycook-droid" target="_blank" class="social-link" title="GitHub">💻</a>
                 <a href="https://www.linkedin.com/in/mohd-zishan-73a868312/" target="_blank" class="social-link"
                     title="LinkedIn">🔗</a>
-                <a href="mailto:mdstz786091@gmail.com" class="social-link" title="Email">📧</a>
+                <a href="/cdn-cgi/l/email-protection#80ede4f3f4fab7b8b6b0b9b1c0e7ede1e9ecaee3efed" class="social-link"
+                    title="Email">📧</a>
                 <a href="#contact" class="social-link" title="Contact">💬</a>
             </div>
             <p style="color: var(--text-secondary); font-size: 18px;">
@@ -1173,54 +1519,77 @@
         </footer>
     </div>
 
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
     <script>
         // =============================================
-        // CRAZY ENTRY ANIMATION
+        // MOBILE DETECTION & PERFORMANCE OPTIMIZATION
+        // =============================================
+        const isMobile = window.innerWidth <= 768 || /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        // =============================================
+        // CRAZY ENTRY ANIMATION (Simplified on mobile)
         // =============================================
         const letters = 'HEY I\'M ZISHAN'.split('');
         const container = document.getElementById('letterContainer');
         const greetingText = document.getElementById('greetingText');
         const enterBtn = document.getElementById('enterBtn');
 
-        // Create flying letters
-        letters.forEach((letter, index) => {
-            if (letter === ' ') return;
+        if (!isMobile) {
+            // Desktop: Full crazy animation with flying letters
+            letters.forEach((letter, index) => {
+                if (letter === ' ') return;
 
-            const letterEl = document.createElement('div');
-            letterEl.className = 'flying-letter';
-            letterEl.textContent = letter;
-            letterEl.style.left = Math.random() * window.innerWidth + 'px';
-            letterEl.style.top = Math.random() * window.innerHeight + 'px';
-            container.appendChild(letterEl);
+                const letterEl = document.createElement('div');
+                letterEl.className = 'flying-letter';
+                letterEl.textContent = letter;
+                letterEl.style.left = Math.random() * window.innerWidth + 'px';
+                letterEl.style.top = Math.random() * window.innerHeight + 'px';
+                container.appendChild(letterEl);
 
-            // Animate letters flying in
+                // Animate letters flying in
+                setTimeout(() => {
+                    letterEl.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    letterEl.style.opacity = '1';
+                    letterEl.style.left = '50%';
+                    letterEl.style.top = '50%';
+                    letterEl.style.transform = `translate(-50%, -50%) translate(${(index - letters.length / 2) * 40}px, 0)`;
+                }, index * 100);
+            });
+
+            // Show greeting text after animation
             setTimeout(() => {
-                letterEl.style.transition = 'all 1s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
-                letterEl.style.opacity = '1';
-                letterEl.style.left = '50%';
-                letterEl.style.top = '50%';
-                letterEl.style.transform = `translate(-50%, -50%) translate(${(index - letters.length / 2) * 40}px, 0)`;
-            }, index * 100);
-        });
+                container.style.opacity = '0';
+                setTimeout(() => {
+                    greetingText.textContent = 'HEY I\'M ZISHAN';
+                    greetingText.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                    greetingText.style.opacity = '1';
+                    greetingText.style.transform = 'scale(1)';
 
-        // Show greeting text
-        setTimeout(() => {
-            container.style.opacity = '0';
+                    // Move text up and show button
+                    setTimeout(() => {
+                        greetingText.style.transform = 'scale(1) translateY(-100px)';
+                        enterBtn.style.transition = 'all 0.6s ease';
+                        enterBtn.style.opacity = '1';
+                        enterBtn.style.transform = 'translateY(0)';
+                    }, 1000);
+                }, 500);
+            }, letters.length * 100 + 1000);
+        } else {
+            // Mobile: Quick simple animation
+            greetingText.textContent = 'HEY I\'M ZISHAN';
             setTimeout(() => {
-                greetingText.textContent = 'HEY I\'M ZISHAN';
-                greetingText.style.transition = 'all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+                greetingText.style.transition = 'all 0.6s ease';
                 greetingText.style.opacity = '1';
                 greetingText.style.transform = 'scale(1)';
 
-                // Move text up and show button
                 setTimeout(() => {
-                    greetingText.style.transform = 'scale(1) translateY(-100px)';
-                    enterBtn.style.transition = 'all 0.6s ease';
+                    greetingText.style.transform = 'scale(1) translateY(-60px)';
+                    enterBtn.style.transition = 'all 0.5s ease';
                     enterBtn.style.opacity = '1';
                     enterBtn.style.transform = 'translateY(0)';
-                }, 1000);
-            }, 500);
-        }, letters.length * 100 + 1000);
+                }, 500);
+            }, 300);
+        }
 
         // Enter button click
         enterBtn.addEventListener('click', () => {
@@ -1240,8 +1609,9 @@
             }, 1000);
         });
 
+        
         // =============================================
-        // PARTICLE ANIMATION
+        // PARTICLE ANIMATION (Optimized for mobile)
         // =============================================
         const canvas = document.getElementById('particleCanvas');
         const ctx = canvas.getContext('2d');
@@ -1249,7 +1619,7 @@
         canvas.height = window.innerHeight;
 
         const particles = [];
-        const particleCount = 100;
+        const particleCount = isMobile ? 20 : 100; // Reduce particles on mobile
 
         class Particle {
             constructor() {
@@ -1292,31 +1662,36 @@
                 particle.draw();
             });
 
-            // Draw connections
-            particles.forEach((a, i) => {
-                particles.slice(i + 1).forEach(b => {
-                    const dx = a.x - b.x;
-                    const dy = a.y - b.y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
+            // Draw connections (skip on mobile for performance)
+            if (!isMobile) {
+                particles.forEach((a, i) => {
+                    particles.slice(i + 1).forEach(b => {
+                        const dx = a.x - b.x;
+                        const dy = a.y - b.y;
+                        const distance = Math.sqrt(dx * dx + dy * dy);
 
-                    if (distance < 100) {
-                        ctx.strokeStyle = `rgba(0, 255, 136, ${1 - distance / 100})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.beginPath();
-                        ctx.moveTo(a.x, a.y);
-                        ctx.lineTo(b.x, b.y);
-                        ctx.stroke();
-                    }
+                        if (distance < 100) {
+                            ctx.strokeStyle = `rgba(0, 255, 136, ${1 - distance / 100})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.beginPath();
+                            ctx.moveTo(a.x, a.y);
+                            ctx.lineTo(b.x, b.y);
+                            ctx.stroke();
+                        }
+                    });
                 });
-            });
+            }
 
             requestAnimationFrame(animateParticles);
         }
 
-        animateParticles();
+        // Only run particles if not mobile or if user has good device
+        if (!isMobile || navigator.hardwareConcurrency > 4) {
+            animateParticles();
+        }
 
         // =============================================
-        // MATRIX RAIN EFFECT
+        // MATRIX RAIN EFFECT (Optimized for mobile)
         // =============================================
         const matrixCanvas = document.getElementById('matrixCanvas');
         const matrixCtx = matrixCanvas.getContext('2d');
@@ -1324,7 +1699,7 @@
         matrixCanvas.height = window.innerHeight;
 
         const matrix = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
-        const fontSize = 16;
+        const fontSize = isMobile ? 20 : 16; // Bigger font on mobile = fewer calculations
         const columns = matrixCanvas.width / fontSize;
         const drops = [];
 
@@ -1350,7 +1725,8 @@
             }
         }
 
-        setInterval(drawMatrix, 35);
+        // Mobile: slower animation (60ms vs 35ms), Desktop: fast animation
+        let matrixInterval = setInterval(drawMatrix, isMobile ? 60 : 35);
 
         // =============================================
         // THEME TOGGLE
@@ -1437,6 +1813,201 @@
                 document.body.style.overflow = 'auto';
             }, letters.length * 100 + 4000);
         });
+
+
+        // =============================================
+        // MOBILE NAVIGATION
+        // =============================================
+        function initMobileNavigation() {
+            const hamburger = document.createElement('div');
+            hamburger.className = 'hamburger';
+            hamburger.innerHTML = `
+        <span></span>
+        <span></span>
+        <span></span>
+    `;
+
+            const nav = document.querySelector('nav');
+            nav.appendChild(hamburger);
+
+            // Create mobile navigation menu
+            const mobileNav = document.createElement('div');
+            mobileNav.className = 'mobile-nav-links';
+            mobileNav.innerHTML = `
+        <button class="close-menu">×</button>
+        <a href="#home" class="mobile-nav-link">HOME</a>
+        <a href="#about" class="mobile-nav-link">ABOUT</a>
+        <a href="#skills" class="mobile-nav-link">SKILLS</a>
+        <a href="#projects" class="mobile-nav-link">PROJECTS</a>
+        <a href="#contact" class="mobile-nav-link">CONTACT</a>
+        <div style="padding: 20px; border-top: 1px solid var(--border);">
+            <div class="theme-toggle" id="mobileThemeToggle"></div>
+        </div>
+    `;
+
+            document.body.appendChild(mobileNav);
+
+            // Toggle mobile menu
+            hamburger.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            // Close menu
+            document.querySelector('.close-menu').addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+
+            // Close menu when clicking links
+            document.querySelectorAll('.mobile-nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNav.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                });
+            });
+
+            // Mobile theme toggle
+            document.getElementById('mobileThemeToggle').addEventListener('click', () => {
+                const currentTheme = document.documentElement.getAttribute('data-theme');
+                const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                document.documentElement.setAttribute('data-theme', newTheme);
+            });
+        }
+
+        // =============================================
+        // MOBILE PERFORMANCE OPTIMIZATIONS
+        // =============================================
+        function optimizeForMobile() {
+            const currentlyMobile = window.innerWidth <= 768;
+
+            if (currentlyMobile) {
+                // Reduce particle count on mobile
+                particles.splice(50); // Keep only 50 particles
+
+                // Reduce matrix animation frequency
+                clearInterval(matrixInterval);
+                matrixInterval = setInterval(drawMatrix, 100); // Slower animation
+
+                // Disable hover effects for touch devices
+                document.body.classList.add('touch-device');
+            }
+        }
+
+        // =============================================
+        // TOUCH-FRIENDLY INTERACTIONS
+        // =============================================
+        function addTouchSupport() {
+            // Add touch feedback for buttons
+            document.querySelectorAll('.btn, .skill-card, .project-card').forEach(element => {
+                element.addEventListener('touchstart', function () {
+                    this.style.transform = 'scale(0.95)';
+                });
+
+                element.addEventListener('touchend', function () {
+                    this.style.transform = '';
+                });
+            });
+        }
+
+        // =============================================
+        // INITIALIZE ON LOAD
+        // =============================================
+        window.addEventListener('load', function () {
+            initMobileNavigation();
+            optimizeForMobile();
+            addTouchSupport();
+
+            // Auto-hide address bar on mobile
+            setTimeout(function () {
+                window.scrollTo(0, 1);
+            }, 0);
+        });
+
+        // =============================================
+        // FONT SIZE ADJUSTMENT FOR MOBILE
+        // =============================================
+        function adjustFontSizes() {
+            const width = window.innerWidth;
+            const root = document.documentElement;
+
+            if (width <= 480) {
+                root.style.fontSize = '14px';
+            } else if (width <= 768) {
+                root.style.fontSize = '15px';
+            } else {
+                root.style.fontSize = '16px';
+            }
+        }
+
+        // =============================================
+        // IMPROVED RESIZE HANDLER
+        // =============================================
+        let resizeTimer;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(function () {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+                matrixCanvas.width = window.innerWidth;
+                matrixCanvas.height = window.innerHeight;
+                adjustFontSizes();
+                optimizeForMobile();
+            }, 250);
+        });
+
+        // =============================================
+        // PERFORMANCE: Disable animations when page not visible
+        // =============================================
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) {
+                // Pause heavy animations when tab is not visible
+                clearInterval(matrixInterval);
+            } else {
+                // Resume animations when tab is visible again
+                matrixInterval = setInterval(drawMatrix, isMobile ? 60 : 35);
+            }
+        });
+
+        // =============================================
+        // TOUCH OPTIMIZATIONS FOR MOBILE
+        // =============================================
+        if (isMobile) {
+            // Prevent bounce scrolling on iOS
+            document.body.addEventListener('touchmove', function (e) {
+                if (e.target === document.body) {
+                    e.preventDefault();
+                }
+            }, { passive: false });
+
+            // Add active states for touch
+            document.querySelectorAll('.btn, .skill-card, .project-card, .social-link').forEach(el => {
+                el.addEventListener('touchstart', function () {
+                    this.style.opacity = '0.8';
+                }, { passive: true });
+
+                el.addEventListener('touchend', function () {
+                    setTimeout(() => {
+                        this.style.opacity = '1';
+                    }, 150);
+                }, { passive: true });
+            });
+
+            // Optimize scroll performance
+            let ticking = false;
+            window.addEventListener('scroll', function () {
+                if (!ticking) {
+                    window.requestAnimationFrame(function () {
+                        // Lightweight scroll handling
+                        ticking = false;
+                    });
+                    ticking = true;
+                }
+            }, { passive: true });
+        }
+
+        // Initial adjustments
+        adjustFontSizes();
     </script>
 </body>
 
